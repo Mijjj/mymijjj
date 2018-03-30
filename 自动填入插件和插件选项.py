@@ -17,9 +17,16 @@ for i in range(len(lines)-1):
     if lines[i].find('"plugin"')!=-1:
         lines[i]='      "plugin": "obfs-local",\n'
     elif lines[i].find('plugin_opts')!=-1:
-#change obfs and obfs-host
+#obfs and obfs-host
         lines[i]='      "plugin_opts": "obfs=tls;obfs-host=www.mircosoft.com",\n'
+    elif lines[i].find('method')!=-1:
+#method
+        lines[i]='      "method": "chacha20",\n'
+    elif lines[i].find('server_port')!=-1:
+#port
+        lines[i]='      "server_port": 8868,\n'
+    elif lines[i].find('password')!=-1:
+#password
+        lines[i]='      "password": "passwd",\n'
         c=c+1
 open("gui-config.json",'w').writelines(lines)
-print "number of times:",c
-time.sleep(5)
